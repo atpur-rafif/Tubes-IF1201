@@ -13,6 +13,10 @@ def create_state(init: A) -> tuple[Callable[[], A], Callable[[A], None]]:
     return (get, set)
 
 # Panggil fungsi ini untuk mendapatkan data dan merubah data
+# Contoh:
+#   user = get_user()
+#   (Operasi pada variabel user)
+#   set_user(user)
 (get_user, set_user) = create_state(USER_SLICE)
 (get_candi, set_candi) = create_state(CANDI_SLICE)
 (get_bahan, set_bahan) = create_state(BAHAN_SLICE)
