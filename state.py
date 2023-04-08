@@ -11,8 +11,8 @@ def create_state(init: A) -> tuple[Callable[[], A], Callable[[A], None]]:
 
     return (get, set)
 
-(get_user, set_user) = create_state(create_slice())
-(get_candi, set_candi) = create_state(create_slice())
-(get_bahan, set_bahan) = create_state(create_slice())
+(get_user, set_user) = create_state(slice_create())
+(get_candi, set_candi) = create_state(slice_create())
+(get_bahan, set_bahan) = create_state(slice_create())
 
 (get_logged_as, set_logged_as) = create_state(User())
