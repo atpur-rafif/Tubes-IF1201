@@ -1,11 +1,4 @@
-from slice import *
-
-def show_error(msg: str):
-    print(msg)
-
-def error_exit(msg: str):
-    show_error(msg)
-    exit()
+from util.slice import *
 
 # Force len only can be use by string data type
 def str_len(string: str):
@@ -16,7 +9,6 @@ def str_split(string: str, splitter: str):
     splitter_len = str_len(splitter)
 
     slice = slice_create()
-
 
     word = ""
     i = 0

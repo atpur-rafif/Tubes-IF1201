@@ -1,4 +1,4 @@
-from util import *
+from util.program import *
 from os.path import exists
 
 import argparse

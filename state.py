@@ -1,4 +1,4 @@
-from slice import *
+from util.slice import *
 
 def create_state(init: A) -> tuple[Callable[[], A], Callable[[A], None]]:
     mutable = [init]
