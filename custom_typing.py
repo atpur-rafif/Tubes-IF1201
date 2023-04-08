@@ -23,3 +23,5 @@ nama = str
 deskripsi = str
 jumlah = int
 Bahan = tuple[nama, deskripsi, jumlah]
+
+CSV_Meta = tuple[int, str]
