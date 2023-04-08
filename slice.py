@@ -1,7 +1,7 @@
-from typing import Any
+from typing import Any, Callable
 from custom_typing import *
 
-def create_slice(base: tuple[int, list[A]] = (0, [])) -> Slice[A]:
+def create_slice(base: tuple[int, list[A | Any]] = (0, [])) -> Slice[A | Any]:
     (size, array) = base
     slice: Slice[Any] = (0, [], 0)
 
@@ -22,5 +22,23 @@ def slice_append(slice: Slice[A], new: A) -> Slice[A]:
 
     array[size] = new
     return slice
+
+def slice_fold(slice: Slice[A], init: B, fn: Callable[[B, A, int], B]) -> B:
+    (size, array, _) = slice
+
+    value = init
+    for i in range(size):
+        value = fn(value, array[i], i)
+
+    return value
+
+def slice_filter(slice: Slice[A], fn: Callable[[A, int], bool]):
+    return slice_fold(slice, create_slice(), lambda v, a, i: slice_append(v, a) if fn(a, i) else v)
+
+def slice_remove(slice: Slice[A], fn: Callable[[A, int], bool]):
+    return slice_filter(slice, lambda v, i: not fn(v, i))
+
+def slice_remove_target(slice: Slice[A], target: A):
+    return slice_remove(slice, lambda v, _: v == target)
 
 
