@@ -62,3 +62,28 @@ def slice_get_element(slice: Slice[A], fn: Callable[[A, int], bool]) -> A | None
 
 def slice_count(slice: Slice[A], fn: Callable[[A, int], bool]):
     return slice_fold(slice, 0, lambda v, a, i: v + 1 if fn(a, i) else v)
+
+# Mutate slice
+def slice_update(slice: Slice[A], fn: Callable[[A, int], A | None]):
+    (size, array, _) = slice
+
+    for i in range(size):
+        new = fn(array[i], i)
+
+        if new == None:
+            continue
+
+        array[i] = new
+
+    return array
+
+def slice_map(slice: Slice[A], fn: Callable[[A, int], B]) -> Slice[B]:
+    new_slice: Any = slice
+    (size, array, _) = new_slice
+
+    new_array: list[Any] = array
+
+    for i in range(size):
+        new_array[i] = fn(array[i], i)
+    
+    return new_slice
