@@ -10,6 +10,7 @@ def create_slice(base: tuple[int, list[A | Any]] = (0, [])) -> Slice[A | Any]:
 
     return slice
 
+
 def slice_append(slice: Slice[A], new: A) -> Slice[A]:
     (size, array, max_size) = slice
 
@@ -32,6 +33,7 @@ def slice_fold(slice: Slice[A], init: B, fn: Callable[[B, A, int], B]) -> B:
 
     return value
 
+# Slice filter (smaller resize)
 def slice_filter(slice: Slice[A], fn: Callable[[A, int], bool]):
     return slice_fold(slice, create_slice(), lambda v, a, i: slice_append(v, a) if fn(a, i) else v)
 
@@ -41,4 +43,22 @@ def slice_remove(slice: Slice[A], fn: Callable[[A, int], bool]):
 def slice_remove_target(slice: Slice[A], target: A):
     return slice_remove(slice, lambda v, _: v == target)
 
+# Slice getter
+def slice_get_size(slice: Slice[Any]) -> int:
+    return slice[0]
 
+def slice_get_array(slice: Slice[A]) -> list[A]:
+    return [slice[1][i] for i in range(slice[0])]
+
+def slice_get_array_lazy(slice: Slice[A]) -> list[A]:
+    return slice[1]
+
+def slice_get_max_size(slice: Slice[A]) -> int:
+    return slice[2]
+
+# Slice get and count
+def slice_get_element(slice: Slice[A], fn: Callable[[A, int], bool]) -> A | None:
+    return slice_fold(slice, None, lambda v, a, i: v if v != None else (a if fn(a, i) else None))
+
+def slice_count(slice: Slice[A], fn: Callable[[A, int], bool]):
+    return slice_fold(slice, 0, lambda v, a, i: v + 1 if fn(a, i) else v)
