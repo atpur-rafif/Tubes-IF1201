@@ -5,19 +5,9 @@ import command.login
 while True:
     cmd = input(">>> ")
 
-    module: Any = None
     if cmd == "exit":
-        module = command.exit
+        command.exit.run()
     elif cmd == 'login':
-        module = command.login
-
-
-    if module == None and module.run == None:
-        show_error("Run function not found")
-        continue
+        command.login.run()
     else:
-        module.run()
-
-
-
-    
+        show_error(f"Command \"{cmd}\" tidak ditemukan")
