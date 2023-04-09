@@ -51,7 +51,7 @@ def run():
         set_bahan(slice_update(get_bahan(), lambda b, _: Bahan((b[0], b[1], b[2] - butuh_list[i])) if b[0] == nama_bahan else None))
 
     for i in range(pembangun_size):
-            set_candi(slice_append(get_candi(), Candi((0, pembangun_array[i][0], butuh_matrix[i][0], butuh_matrix[i][1], butuh_matrix[i][2]))))
+            set_candi(slice_append(get_candi(), Candi((create_candi_id(), pembangun_array[i][0], butuh_matrix[i][0], butuh_matrix[i][1], butuh_matrix[i][2]))))
 
     print(f"Mengerahkan {pembangun_size} jin")
     print(f"Berhasil membangun {pembangun_size} candi")

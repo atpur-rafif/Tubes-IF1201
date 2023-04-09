@@ -46,3 +46,10 @@ for i in range(BAHAN_SIZE):
     bahan = slice_get_element(get_bahan(), lambda b, _: b[0] == BAHAN_LIST[i][0]) 
     if bahan == None:
         set_bahan(slice_append(get_bahan(), Bahan((BAHAN_LIST[i][0], BAHAN_LIST[0][1], 0))))
+
+max_id = slice_fold(get_candi(), -1, lambda v, a, _: a[0] if a[0] > v else v)
+(get_candi_id, set_candi_id) = create_state(max_id)
+
+def create_candi_id():
+    set_candi_id(get_candi_id() + 1)
+    return get_candi_id()
