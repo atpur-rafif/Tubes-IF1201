@@ -2,6 +2,11 @@ from util.data import *
 from state import *
 
 def run():
+    if not (get_role() == "bandung_bondowoso" or get_role() == "roro_jonggrang"):
+        show_error("Anda tidak memiliki akses ke command ini")
+        return
+
+
     path = input("Masukkan folder: ")
 
     prompt = input_validator(
