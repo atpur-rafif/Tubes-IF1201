@@ -32,3 +32,17 @@ def get_role() -> role | None:
     if user == None:
         return None
     return user[2]
+
+
+BAHAN_SIZE = 3
+BAHAN_LIST = [
+    ("pasir", "ini pasir"),
+    ("batu", "ini batu"),
+    ("air", "ini air")
+]
+
+# Initialize bahan
+for i in range(BAHAN_SIZE):
+    bahan = slice_get_element(get_bahan(), lambda b, _: b[0] == BAHAN_LIST[i][0]) 
+    if bahan == None:
+        set_bahan(slice_append(get_bahan(), Bahan((BAHAN_LIST[i][0], BAHAN_LIST[0][1], 0))))

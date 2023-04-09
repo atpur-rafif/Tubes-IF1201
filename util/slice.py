@@ -67,7 +67,7 @@ def slice_count(slice: Slice[A], fn: Callable[[A, int], bool]):
 
 # Mutate slice, dengan menggunakan callback
 def slice_update(slice: Slice[A], fn: Callable[[A, int], A | None]):
-    (size, array, _) = slice
+    (size, array, max_size) = slice
 
     for i in range(size):
         new = fn(array[i], i)
@@ -77,7 +77,10 @@ def slice_update(slice: Slice[A], fn: Callable[[A, int], A | None]):
 
         array[i] = new
 
-    return array
+    return (size, array, max_size)
+
+def slice_update_target(slice: Slice[A], target: A, new: A):
+    return slice_update(slice, lambda v, _: new if v == target else None)
 
 def slice_map(slice: Slice[A], fn: Callable[[A, int], B]) -> Slice[B]:
     new_slice: Any = slice
