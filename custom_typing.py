@@ -1,4 +1,4 @@
-from typing import TypeVar
+from typing import TypeVar, Literal
 
 A = TypeVar("A")
 B = TypeVar("B")
@@ -9,7 +9,7 @@ Slice = tuple[int, list[A], int]
 
 nama = str
 password = str
-role = str
+role = Literal["bandung_bondowoso", "roro_jonggrang", "jin_pengumpul", "jin_pembangun"]
 User = tuple[nama, password, role]
 
 id = int
@@ -19,7 +19,7 @@ batu = int
 air = int
 Candi = tuple[id, pembuat, pasir, batu, air]
 
-nama = str
+nama = Literal["pasir", "batu", "air"]
 deskripsi = str
 jumlah = int
 Bahan = tuple[nama, deskripsi, jumlah]
