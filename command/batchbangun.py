@@ -2,12 +2,17 @@ from state import *
 from random import randrange
 
 def run():
+    if get_role() != "bandung_bondowoso":
+        show_error("Anda tidak memiliki akses ke command ini")
+        return
+
+
     pembangun = slice_filter(get_user(), lambda u, _: u[2] == "jin_pembangun")
     pembangun_array = slice_get_array(pembangun)
     pembangun_size = slice_get_size(pembangun)
 
     if pembangun_size == 0:
-        show_error("Anda tidak memiliki jin pengumpul")
+        show_error("Anda tidak memiliki jin pembangun")
         return
 
     butuh_str = ""
