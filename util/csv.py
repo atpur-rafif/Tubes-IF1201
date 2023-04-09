@@ -1,5 +1,3 @@
-from custom_typing import *
-
 from util.slice import *
 from util.str import *
 from util.program import *
@@ -32,3 +30,9 @@ def csv_parser(string: str) -> tuple[Slice[list[str]], CSV_Meta]:
 
     return (table, (header_len, header))
 
+def csv_maker(slice: Slice[list[str]], meta: CSV_Meta) -> str:
+    (col_size, header) = meta
+
+    row = slice_map(slice, lambda r, i: str_join(slice_create((col_size, r)), ";"))
+    table = str_join(row, "\n")
+    return f"{header}\n{table}"

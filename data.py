@@ -42,3 +42,6 @@ if not (exists(USER_PATH) and exists(CANDI_PATH) and exists(BAHAN_PATH)):
 USER_SLICE = read_data(USER_PATH, META_LIST[0], lambda r: User((r[0], r[1], r[2])))
 CANDI_SLICE = read_data(CANDI_PATH, META_LIST[1], lambda r: Candi((int(r[0]), r[1], int(r[2]), int(r[3]), int(r[4]))))
 BAHAN_SLICE = read_data(BAHAN_PATH, META_LIST[2], lambda r: Bahan((r[0], r[1], int(r[2]))))
+
+def write_data(path: str) -> None:
+    ...
