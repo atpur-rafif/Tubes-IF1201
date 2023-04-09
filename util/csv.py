@@ -1,6 +1,6 @@
+from util.program import *
 from util.slice import *
 from util.str import *
-from util.program import *
 
 def csv_parser(string: str) -> tuple[Slice[list[str]], CSV_Meta]:
     (row_size, row, _) = str_split(string, "\n")

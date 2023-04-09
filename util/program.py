@@ -1,4 +1,4 @@
-from util.slice import *
+from typing import Callable
 from custom_typing import *
 
 def show_error(msg: str):

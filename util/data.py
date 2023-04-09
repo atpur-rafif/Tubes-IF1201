@@ -1,4 +1,3 @@
-from env import *
 from util.csv import *
 from custom_typing import *
 from os.path import exists
