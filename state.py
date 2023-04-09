@@ -1,5 +1,5 @@
 from util.slice import *
-from data import *
+from util.data import *
 
 def create_state(init: A) -> tuple[Callable[[], A], Callable[[A], None]]:
     mutable = [init]
