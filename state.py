@@ -17,8 +17,13 @@ def create_state(init: A) -> tuple[Callable[[], A], Callable[[A], None]]:
 #   user = get_user()
 #   (Operasi pada variabel user)
 #   set_user(user)
+
+(USER_SLICE, CANDI_SLICE, BAHAN_SLICE) = read_data(FOLDER)
+
 (get_user, set_user) = create_state(USER_SLICE)
 (get_candi, set_candi) = create_state(CANDI_SLICE)
 (get_bahan, set_bahan) = create_state(BAHAN_SLICE)
 
 (get_logged_as, set_logged_as) = create_state(wrap_partial(User(), True))
+
+write_data("tmp/testing/zzz", (get_user(), get_candi(), get_bahan()))
