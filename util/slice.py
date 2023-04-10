@@ -1,8 +1,8 @@
-from typing import Any, Callable
+from typing import Any, Callable, Union
 from custom_typing import *
 
 # Membuat data slice baru
-def slice_create(base: tuple[int, list[A | Any]] = (0, [])) -> Slice[A | Any]:
+def slice_create(base: tuple[int, list[Union[A, Any]]] = (0, [])) -> Slice[Union[A, Any]]:
     (size, array) = base
     slice: Slice[Any] = (0, [], 0)
 
@@ -59,14 +59,14 @@ def slice_get_max_size(slice: Slice[A]) -> int:
     return slice[2]
 
 # Slice get and count, mendapatkan informasi dengan callback
-def slice_get_element(slice: Slice[A], fn: Callable[[A, int], bool]) -> A | None:
+def slice_get_element(slice: Slice[A], fn: Callable[[A, int], bool]) -> Union[A, None]:
     return slice_fold(slice, None, lambda v, a, i: v if v != None else (a if fn(a, i) else None))
 
 def slice_count(slice: Slice[A], fn: Callable[[A, int], bool]):
     return slice_fold(slice, 0, lambda v, a, i: v + 1 if fn(a, i) else v)
 
 # Mutate slice, dengan menggunakan callback
-def slice_update(slice: Slice[A], fn: Callable[[A, int], A | None]):
+def slice_update(slice: Slice[A], fn: Callable[[A, int], Union[A, None]]):
     (size, array, max_size) = slice
 
     for i in range(size):

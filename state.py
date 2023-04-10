@@ -1,4 +1,5 @@
 from env import *
+from typing import Union
 from util.slice import *
 from util.data import *
 
@@ -27,7 +28,7 @@ def create_state(init: A) -> tuple[Callable[[], A], Callable[[A], None]]:
 
 (get_logged_as, set_logged_as) = create_state(wrap_partial(User(), True))
 
-def get_role() -> role | None:
+def get_role() -> Union[role, None]:
     user = get_logged_as()
     if user == None:
         return None
