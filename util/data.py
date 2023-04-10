@@ -59,7 +59,7 @@ def write_data(path: str, slices: tuple[Slice[User], Slice[Candi], Slice[Bahan]]
     BAHAN_PATH = f"{path}/bahan_bangunan.csv"
 
     def fn(path: str,  slice: Slice[Any], meta: CSV_Meta):
-        unwrapped = slice_map(slice, lambda v, _: [v[i] for i in range(meta[0])])
+        unwrapped = slice_map(slice, lambda v, _: [str(v[i]) for i in range(meta[0])])
         raw = csv_maker(unwrapped, meta)
         open(path, 'w').write(raw)
 
