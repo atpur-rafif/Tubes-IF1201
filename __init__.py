@@ -5,6 +5,7 @@ import command.save
 import command.batchbangun
 import command.batchkumpul
 import command.hapusjin
+import command.help
 
 while True:
     cmd = input(">>> ")
@@ -21,5 +22,7 @@ while True:
         command.batchkumpul.run()
     elif cmd == 'hapusjin':
         command.hapusjin.run()
+    elif cmd == 'help':
+        command.help.run()
     else:
         show_error(f"Command \"{cmd}\" tidak ditemukan")
