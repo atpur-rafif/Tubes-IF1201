@@ -50,7 +50,21 @@ for i in range(BAHAN_SIZE):
 
 max_id = slice_fold(get_candi(), -1, lambda v, a, _: a[0] if a[0] > v else v)
 (get_candi_id, set_candi_id) = create_state(max_id)
+(get_unused_id, set_unused_id) = create_state(slice_create())
+
+def empty_candi_id(i: int):
+    set_unused_id(slice_append(get_unused_id(), i))
 
 def create_candi_id():
-    set_candi_id(get_candi_id() + 1)
-    return get_candi_id()
+    (unused_length, unused_array, _) = get_unused_id()
+
+    if unused_length == 0:
+        set_candi_id(get_candi_id() + 1)
+        return get_candi_id()
+    else:
+        min = unused_array[0]
+        for i in range(unused_length):
+            if unused_array[i] < min:
+                min = unused_array[i]
+        set_unused_id(slice_remove_target(get_unused_id(), min))
+        return min
