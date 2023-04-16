@@ -19,7 +19,6 @@ def run():
 
     bahan_digunakan = (0, 0, 0)
 
-    candi = get_candi()
     for i in range(candi_size):
         cost = 10000 * candi_array[i][2] + 15000 * candi_array[i][3] + 7500 * candi_array[i][4]
         if cost < min_cost[1]:

@@ -21,5 +21,12 @@ def run():
     
     print("Menghapus jin...")
     set_user(slice_remove(get_user(), lambda u,_:u[0]==usn_jin_dihapus))
+
+    candi_dihapus = slice_filter(get_candi(), lambda u,_:u[1]==usn_jin_dihapus)
+    candi_dihapus_size = slice_get_size(candi_dihapus)
+    candi_dihapus_array = slice_get_array(candi_dihapus)
+    for i in range (candi_dihapus_size):
+        empty_candi_id(candi_dihapus_array[i][0])
     set_candi(slice_remove(get_candi(), lambda u,_:u[1]==usn_jin_dihapus))
+
     print("Jin telah berhasil dihapus dari alam gaib.")
