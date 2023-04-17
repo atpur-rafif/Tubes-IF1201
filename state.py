@@ -52,6 +52,7 @@ max_id = slice_fold(get_candi(), -1, lambda v, a, _: a[0] if a[0] > v else v)
 (get_candi_id, set_candi_id) = create_state(max_id)
 (get_unused_id, set_unused_id) = create_state(slice_create())
 
+
 def empty_candi_id(i: int):
     set_unused_id(slice_append(get_unused_id(), i))
 
@@ -68,3 +69,13 @@ def create_candi_id():
                 min = unused_array[i]
         set_unused_id(slice_remove_target(get_unused_id(), min))
         return min
+
+used_id = [False for _ in range(max_id)]
+(candi_size, candi_array, _) = get_candi()
+
+for i in range(candi_size):
+    used_id[candi_array[i][0]] = True
+
+for i in range(max_id):
+    if used_id[i] == False:
+        empty_candi_id(i)
