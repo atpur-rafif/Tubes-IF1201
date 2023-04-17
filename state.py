@@ -70,7 +70,7 @@ def create_candi_id():
         set_unused_id(slice_remove_target(get_unused_id(), min))
         return min
 
-used_id = [False for _ in range(max_id)]
+used_id = [False for _ in range(max_id + 1)]
 (candi_size, candi_array, _) = get_candi()
 
 for i in range(candi_size):
