@@ -8,6 +8,9 @@ import command.hapusjin
 import command.help
 import command.laporanjin
 import command.laporancandi
+import command.ayamberkokok
+import command.jinpengumpul
+import command.jinpembangun
 
 while True:
     cmd = input(">>> ")
@@ -30,5 +33,11 @@ while True:
         command.laporanjin.run()
     elif cmd == 'laporancandi':
         command.laporancandi.run()
+    elif cmd == 'ayamberkokok':
+        command.ayamberkokok.run()
+    elif cmd == 'jinpengumpul':
+        command.jinpengumpul.run()
+    elif cmd == 'jinpembangun':
+        command.jinpembangun.run()
     else:
         show_error(f"Command \"{cmd}\" tidak ditemukan")
