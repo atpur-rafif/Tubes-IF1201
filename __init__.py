@@ -9,6 +9,7 @@ import command.help
 import command.laporanjin
 import command.laporancandi
 import command.logout
+import command.hancurkancandi
 
 while True:
     cmd = input(">>> ")
@@ -33,5 +34,7 @@ while True:
         command.laporancandi.run()
     elif cmd == 'logout':
         command.logout.run()
+    elif cmd == 'hancurkancandi':
+        command.hancurkancandi.run()
     else:
         show_error(f"Command \"{cmd}\" tidak ditemukan")
