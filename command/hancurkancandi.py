@@ -18,4 +18,5 @@ def run():
         print("Candi batal dihapus.")
         return
     set_candi(slice_remove(get_candi(), lambda b,_: b[0] == id))
+    empty_candi_id(id)
     print('Candi telah berhasil dihancurkan.')
