@@ -47,3 +47,4 @@ while True:
         command.hancurkancandi.run()
     else:
         show_error(f"Command \"{cmd}\" tidak ditemukan")
+    print("")
