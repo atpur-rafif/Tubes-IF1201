@@ -24,7 +24,7 @@ def run():
 
     password = input_validator(
         "Masukkan password: ",
-        lambda v: f"",
+        lambda _: f"Panjang password harus diantara 5 dan 25",
         lambda v: 5 <= str_len(v) and str_len(v) <= 25
     )
 
