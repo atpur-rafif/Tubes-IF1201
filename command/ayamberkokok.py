@@ -15,4 +15,4 @@ def run():
         print("Roro Jonggrang dikutuk menjadi candi.")
     else: #candi >= 100
         print("Yah, Bandung Bondowoso memenangkan permainan!")
-    exit
+    exit()

@@ -5,6 +5,7 @@ def run():
     if get_role() != "jin_pengumpul":
         show_error("Anda tidak memiliki akses ke command ini")
         return
+
     jumlah_pasir = randrange (0,5)
     jumlah_batu = randrange (0,5)
     jumlah_air = randrange (0,5)

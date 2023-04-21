@@ -1,13 +1,12 @@
 from state import *
 from random import randrange
-import util.data
 
 def run():
     if get_role() != "jin_pembangun":
         show_error("Anda tidak memiliki akses ke command ini")
         return
     
-    data = read_data("data")[2][1]
+    (_, data, _) = get_bahan()
     jumlah_pasir = data[0][2]
     jumlah_batu = data[1][2]
     jumlah_air = data[2][2]
@@ -15,9 +14,11 @@ def run():
     butuh_pasir = randrange (1,5)
     butuh_batu = randrange (1,5)
     butuh_air = randrange (1,5)
+
     candi = 0
     candi_perlu = 100
 
+    # TODO: Apakah bangun terus sampai bahan habis, atau gmn?
     while (jumlah_pasir > 0) and (jumlah_batu > 0) and (jumlah_air > 0): 
         if (jumlah_pasir >= butuh_pasir) and (jumlah_batu >= butuh_batu) and (jumlah_air >= butuh_air):
             candi += 1

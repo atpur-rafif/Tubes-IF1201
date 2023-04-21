@@ -37,9 +37,9 @@ while True:
         command.laporancandi.run()
     elif cmd == 'ayamberkokok':
         command.ayamberkokok.run()
-    elif cmd == 'jinpengumpul':
+    elif cmd == 'kumpul':
         command.jinpengumpul.run()
-    elif cmd == 'jinpembangun':
+    elif cmd == 'bangun':
         command.jinpembangun.run()
     elif cmd == 'logout':
         command.logout.run()

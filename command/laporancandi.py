@@ -13,7 +13,7 @@ def run():
     if candi_size == 0:
         candi_array = [[-1]] # id candi selalu > -1
 
-    min_cost = (candi_array[0][0], 163000)
+    min_cost = (candi_array[0][0], 0)
     max_cost = (candi_array[0][0], 0)
     # (ID candi (integer), biaya yang dihabiskan (integer))
 
@@ -21,9 +21,9 @@ def run():
 
     for i in range(candi_size):
         cost = 10000 * candi_array[i][2] + 15000 * candi_array[i][3] + 7500 * candi_array[i][4]
-        if cost < min_cost[1]:
+        if min_cost[1] == 0 or cost < min_cost[1]:
             min_cost = (candi_array[i][0], cost)
-        if cost > max_cost[1]:
+        if min_cost[1] == 0 or cost > max_cost[1]:
             max_cost = (candi_array[i][0], cost)
         bahan_digunakan = (bahan_digunakan[0] + candi_array[i][2], bahan_digunakan[1] + candi_array[i][3], bahan_digunakan[2] + candi_array[i][4])
         # jika terdapat 2 atau lebih candi termahal atau termurah, output mengeluarkan candi yang terlebih dahulu dibangun
