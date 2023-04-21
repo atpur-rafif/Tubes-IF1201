@@ -39,7 +39,7 @@ def slice_map(slice: Slice[A], fn: Callable[[A, int], B]) -> Slice[B]:
     new_slice: Any = slice
     (size, array, max_size) = new_slice
 
-    new_array: list[Any] = [None for _ in range(size)]
+    new_array: list[Any] = [None for _ in range(max_size)]
 
     for i in range(size):
         new_array[i] = fn(array[i], i)
