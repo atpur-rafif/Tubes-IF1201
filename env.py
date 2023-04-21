@@ -11,3 +11,6 @@ if FOLDER == None:
     error_exit("Folder tidak diberikan")
 elif not exists(FOLDER):
     error_exit("Folter tidak ditemukan")
+
+CANDI_MAKS = 100
+JIN_MAKS = 100

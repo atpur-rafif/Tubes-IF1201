@@ -1,8 +1,10 @@
 from state import *
 from random import randrange
+from env import *
 
 def run():
-    if get_role() != "jin_pembangun":
+    user = get_logged_as()
+    if user == None or user[2] != "jin_pembangun":
         show_error("Anda tidak memiliki akses ke command ini")
         return
     
@@ -15,28 +17,20 @@ def run():
     butuh_batu = randrange (1,5)
     butuh_air = randrange (1,5)
 
-    candi = 0
-    candi_perlu = 100
+    if (jumlah_pasir < butuh_pasir) or (jumlah_batu < butuh_batu) or (jumlah_air < butuh_air):
+        print("Bahan bangunan tidak mencukupi.")
+        print("Candi tidak bisa dibangun")
+        return
 
-    # TODO: Apakah bangun terus sampai bahan habis, atau gmn?
-    while (jumlah_pasir > 0) and (jumlah_batu > 0) and (jumlah_air > 0): 
-        if (jumlah_pasir >= butuh_pasir) and (jumlah_batu >= butuh_batu) and (jumlah_air >= butuh_air):
-            candi += 1
-            jumlah_pasir -= butuh_pasir
-            jumlah_batu -= butuh_batu
-            jumlah_air -= butuh_air
+    set_bahan(slice_update(get_bahan(), lambda b, _: Bahan((b[0], b[1], b[2] - butuh_pasir)) if b[0] == "pasir" else None))
+    set_bahan(slice_update(get_bahan(), lambda b, _: Bahan((b[0], b[1], b[2] - butuh_batu)) if b[0] == "batu" else None))
+    set_bahan(slice_update(get_bahan(), lambda b, _: Bahan((b[0], b[1], b[2] - butuh_air)) if b[0] == "air" else None))
+    set_candi(slice_append(get_candi(), Candi((create_candi_id(), user[0], butuh_pasir, butuh_batu, butuh_air))))
 
-            if (candi >= 100):
-                candi_perlu = 0
-            else: 
-                candi_perlu -= 1
-            print("Candi berhasil dibangun.")
-            print(f"Sisa candi yang perlu dibangun: {candi_perlu}")
-        else: 
-            print("Bahan bangunan tidak mencukupi.")
-            print("Candi tidak bisa dibangun")
-            break
-     
-    set_bahan(slice_update(get_bahan(), lambda b, _: Bahan((b[0], b[1], b[2] - jumlah_pasir)) if b[0] == "pasir" else None))
-    set_bahan(slice_update(get_bahan(), lambda b, _: Bahan((b[0], b[1], b[2] - jumlah_batu)) if b[0] == "batu" else None))
-    set_bahan(slice_update(get_bahan(), lambda b, _: Bahan((b[0], b[1], b[2] - jumlah_air)) if b[0] == "air" else None))
+    (jumlah_candi, _, _) = get_candi()
+    perlu_bangun = CANDI_MAKS - jumlah_candi
+    if perlu_bangun < 0:
+        perlu_bangun = 0
+
+    print("Candi berhasil dibangun.")
+    print(f"Sisa candi yang perlu dibangun: {perlu_bangun}")

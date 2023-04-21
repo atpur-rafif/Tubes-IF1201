@@ -1,5 +1,4 @@
 from state import *
-from random import randrange
 def run():
     if get_role() != 'roro_jonggrang':
         show_error('Anda tidak memiliki akses ke command ini')
@@ -10,7 +9,7 @@ def run():
         show_error('Tidak ada candi dengan ID tersebut.')
         return
     prompt = input_validator(
-        f"Apakah anda yakin ingin menghapus jin dengan username {id} (Y/N)? ",
+        f"Apakah anda yakin ingin menghancurkan candi dengan id {id} (Y/N)? ",
         lambda v: f"Input \"{v}\" tidak valid",
         lambda v: v == "Y" or v == "N"
     )

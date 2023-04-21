@@ -6,7 +6,6 @@ def run():
         show_error("Anda tidak memiliki akses ke command ini")
         return
 
-
     pembangun = slice_filter(get_user(), lambda u, _: u[2] == "jin_pembangun")
     pembangun_array = slice_get_array(pembangun)
     pembangun_size = slice_get_size(pembangun)
