@@ -2,8 +2,6 @@ from util.data import *
 from state import *
 
 def run():
-
-
     path = input("Masukkan folder: ")
 
     prompt = input_validator(

@@ -11,6 +11,8 @@ import command.laporancandi
 import command.ayamberkokok
 import command.jinpengumpul
 import command.jinpembangun
+import command.logout
+import command.hancurkancandi
 
 while True:
     cmd = input(">>> ")
@@ -39,5 +41,9 @@ while True:
         command.jinpengumpul.run()
     elif cmd == 'jinpembangun':
         command.jinpembangun.run()
+    elif cmd == 'logout':
+        command.logout.run()
+    elif cmd == 'hancurkancandi':
+        command.hancurkancandi.run()
     else:
         show_error(f"Command \"{cmd}\" tidak ditemukan")
