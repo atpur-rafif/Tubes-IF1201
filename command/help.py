@@ -24,7 +24,7 @@ def run():
     elif get_role() == 'jin_pembangun':
         print("=========== HELP ===========")
         print(f'1. logout\n   Untuk keluar dari akun yang digunakan sekarang')
-        print(f'2. bangun\n  Untuk membangun candi dengan bahan-bahan yang tersedia\n  jika bahan tidak mencukupi maka tidak dapat membangun')
+        print(f'2. bangun\n   Untuk membangun candi dengan bahan-bahan yang tersedia\n   jika bahan tidak mencukupi maka tidak dapat membangun')
         print(f'3. save\n   untuk menjalankan prosedur penyimpanan data sesuai dengan struktur data external')
     elif get_role() == 'jin_pengumpul':
         print("=========== HELP ===========")
