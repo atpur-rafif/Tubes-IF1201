@@ -1,14 +1,15 @@
 from state import *
-from random import randrange
+from util.random import create_random_range
 
 def run():
     if get_role() != "jin_pengumpul":
         show_error("Anda tidak memiliki akses ke command ini")
         return
 
-    jumlah_pasir = randrange (0,5)
-    jumlah_batu = randrange (0,5)
-    jumlah_air = randrange (0,5)
+    gen = create_random_range(0, 5)
+    jumlah_pasir = gen()
+    jumlah_batu = gen()
+    jumlah_air = gen()
 
     print (f"Jin menemukan {jumlah_pasir} pasir, {jumlah_batu} batu, dan {jumlah_air} air.")
     set_bahan(slice_update(get_bahan(), lambda b, _: Bahan((b[0], b[1], b[2] + jumlah_pasir)) if b[0] == "pasir" else None))
