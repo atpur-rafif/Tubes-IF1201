@@ -14,6 +14,7 @@ import command.jinpembangun
 import command.logout
 import command.hancurkancandi
 import command.summonjin
+import command.ubahjin
 
 while True:
     cmd = input(">>> ")
@@ -48,6 +49,8 @@ while True:
         command.hancurkancandi.run()
     elif cmd == "summonjin":
         command.summonjin.run()
+    elif cmd == "ubahjin":
+        command.ubahjin.run()
     else:
         show_error(f"Command \"{cmd}\" tidak ditemukan")
     print("")
