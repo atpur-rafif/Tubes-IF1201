@@ -8,6 +8,9 @@ import command.hapusjin
 import command.help
 import command.laporanjin
 import command.laporancandi
+import command.ayamberkokok
+import command.jinpengumpul
+import command.jinpembangun
 import command.logout
 import command.hancurkancandi
 
@@ -32,6 +35,12 @@ while True:
         command.laporanjin.run()
     elif cmd == 'laporancandi':
         command.laporancandi.run()
+    elif cmd == 'ayamberkokok':
+        command.ayamberkokok.run()
+    elif cmd == 'jinpengumpul':
+        command.jinpengumpul.run()
+    elif cmd == 'jinpembangun':
+        command.jinpembangun.run()
     elif cmd == 'logout':
         command.logout.run()
     elif cmd == 'hancurkancandi':
