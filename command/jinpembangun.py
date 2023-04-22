@@ -1,6 +1,6 @@
 from state import *
 from env import *
-from util.random import *
+from util.random import random_range
 
 def run():
     user = get_logged_as()
@@ -13,10 +13,9 @@ def run():
     jumlah_batu = data[1][2]
     jumlah_air = data[2][2]
 
-    gen = create_random_range(1, 5)
-    butuh_pasir = gen()
-    butuh_batu = gen()
-    butuh_air = gen()
+    butuh_pasir = random_range(1, 5)
+    butuh_batu = random_range(1, 5)
+    butuh_air = random_range(1, 5)
 
     if (jumlah_pasir < butuh_pasir) or (jumlah_batu < butuh_batu) or (jumlah_air < butuh_air):
         print("Bahan bangunan tidak mencukupi.")

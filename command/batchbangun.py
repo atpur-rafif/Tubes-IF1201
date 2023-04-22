@@ -1,5 +1,5 @@
 from state import *
-from util.random import create_random_range
+from util.random import random_range
 
 def run():
     if get_role() != "bandung_bondowoso":
@@ -19,12 +19,11 @@ def run():
 
     butuh_list = [0 for _ in range(BAHAN_SIZE)]
     butuh_matrix = [[0 for _ in range(BAHAN_SIZE)] for _ in range(pembangun_size)]
-    gen = create_random_range(1, 5)
 
     for j in range(BAHAN_SIZE):
         s = 0
         for i in range(pembangun_size):
-            r = gen()
+            r = random_range(1, 5)
             butuh_matrix[i][j] = r
             s += r
         butuh_list[j] = s

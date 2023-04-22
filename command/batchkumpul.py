@@ -1,5 +1,5 @@
 from state import *
-from util.random import create_random_range
+from util.random import random_range
 
 def run():
     if get_role() != "bandung_bondowoso":
@@ -14,9 +14,8 @@ def run():
 
     def gen():
         s = 0
-        g = create_random_range(0, 5)
         for _ in range(pengumpul_size):
-            s += g()
+            s += random_range(0, 5)
         return s
 
     bahan_dapat = [gen() for _ in range(BAHAN_SIZE)]

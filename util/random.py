@@ -1,15 +1,16 @@
 from time import time
 
-def create_random_range(start: int, end: int):
-    m = end - start
+seed = int(time() * 1e6)
+X = [int(time() * 1e6)]
 
-    seed = int(time() * 1e6)
-    gen_state = [int(seed % m)]
-    A = int((seed // m) % (m - 1)) + 1
-    C = int((seed // (m * m)) % (m - 1)) + 1
+# glibc parameter, source: https://en.wikipedia.org/wiki/Linear_congruential_generator#Parameters_in_common_use
+A = (1103515245)
+C = (12345)
+M = (2 ** 31 - 1)
 
-    def generator():
-        gen_state[0] = int((A * gen_state[0] + C) % m)
-        return start + gen_state[0]
+def random_gclib():
+    X[0] = int((A * X[0] + C) % M)
+    return X[0]
 
-    return generator
+def random_range(start: int, end: int):
+    return start + (random_gclib() % (end - start))
