@@ -56,7 +56,7 @@ max_id = slice_fold(get_candi(), -1, lambda v, a, _: a[0] if a[0] > v else v)
 def empty_candi_id(i: int):
     set_unused_id(slice_append(get_unused_id(), i))
 
-def create_candi_id():
+def create_candi_id() -> int:
     (unused_length, unused_array, _) = get_unused_id()
 
     if unused_length == 0:
@@ -79,3 +79,7 @@ for i in range(candi_size):
 for i in range(max_id):
     if used_id[i] == False:
         empty_candi_id(i)
+
+def undo_slice_wrapper() -> Slice[tuple[User, int, list[Candi]]]:
+    return slice_create()
+(get_undo_stack, set_undo_stack) = create_state(undo_slice_wrapper())

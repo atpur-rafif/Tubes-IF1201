@@ -47,7 +47,7 @@ def slice_map(slice: Slice[A], fn: Callable[[A, int], B]) -> Slice[B]:
     return (size, new_array, max_size)
 
 # Slice filter, operasi yang memperkecil slice
-def slice_filter(slice: Slice[A], fn: Callable[[A, int], bool]):
+def slice_filter(slice: Slice[A], fn: Callable[[A, int], bool]) -> Slice[A]:
     return slice_fold(slice, slice_create(), lambda v, a, i: slice_append(v, a) if fn(a, i) else v)
 
 def slice_remove(slice: Slice[A], fn: Callable[[A, int], bool]):

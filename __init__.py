@@ -15,6 +15,7 @@ import command.logout
 import command.hancurkancandi
 import command.summonjin
 import command.ubahjin
+import command.undo
 
 while True:
     cmd = input(">>> ")
@@ -51,6 +52,8 @@ while True:
         command.summonjin.run()
     elif cmd == "ubahjin":
         command.ubahjin.run()
+    elif cmd == "undo":
+        command.undo.run()
     else:
         show_error(f"Command \"{cmd}\" tidak ditemukan")
     print("")

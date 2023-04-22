@@ -27,5 +27,6 @@ def run():
     for i in range (candi_dihapus_size):
         empty_candi_id(candi_dihapus_array[i][0])
     set_candi(slice_remove(get_candi(), lambda u,_:u[1]==usn_jin_dihapus))
+    set_undo_stack(slice_append(get_undo_stack(), (jin_dihapus, candi_dihapus_size, candi_dihapus_array)))
 
     print("Jin telah berhasil dihapus dari alam gaib.")
