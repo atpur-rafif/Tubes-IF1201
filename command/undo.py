@@ -11,7 +11,7 @@ def run():
 
     if exist != None:
         prompt = input_validator(
-            "Terdapat user dengan nama yang sama, simpan:\n (1) Gabungan\n(2) User awal\n(3) User terbaru",
+            "Terdapat user dengan nama yang sama\n(1) Gabungan\n(2) User awal\n(3) User terbaru\nLakukan simpan: ",
             lambda v: f"Input \"{v}\" tidak valid",
             lambda v: v == "1" or v == "2" or v == "3"
         )
