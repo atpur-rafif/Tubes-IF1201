@@ -20,7 +20,37 @@ def create_state(init: A) -> tuple[Callable[[], A], Callable[[A], None]]:
 #   (Operasi pada variabel user)
 #   set_user(user)
 
-(USER_SLICE, CANDI_SLICE, BAHAN_SLICE) = read_data(FOLDER)
+DEFAULT_USER = slice_create((2, [
+    User(("Bondowoso", "cintaroro", "bandung_bondowoso")), 
+    User(("Roro", "gasukabondo", "roro_jonggrang"))
+    ]))
+
+if Folder == None:
+    prompt = input_validator(
+        "Folder save tidak diberikan, membuat save baru (Y/N)? ",
+        lambda v: f"Input \"{v}\" tidak valid",
+        lambda v: v == "Y" or v == "N"
+    )
+
+    if prompt == "N":
+        print("Keluar program...")
+        exit()
+    
+    Folder = input_validator(
+        "Masukkan folder save baru: ",
+        lambda v: f"Folder \"{v}\" sudah digunakan",
+        lambda v: not exists(v)
+    )
+
+    write_data(Folder, (
+        DEFAULT_USER,
+        slice_create(), 
+        slice_create()
+    ))
+
+    print("Save data baru berhasil dibuat")
+
+(USER_SLICE, CANDI_SLICE, BAHAN_SLICE) = read_data(Folder)
 
 (get_user, set_user) = create_state(USER_SLICE)
 (get_candi, set_candi) = create_state(CANDI_SLICE)
