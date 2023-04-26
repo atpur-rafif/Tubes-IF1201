@@ -25,15 +25,20 @@ def slice_append(slice: Slice[A], new: A) -> Slice[A]:
     array[size] = new
     return (size + 1, array, max_size)
 
+# RECURSIVE
 # Fold pattern untuk slice
 def slice_fold(slice: Slice[A], init: B, fn: Callable[[B, A, int], B]) -> B:
-    (size, array, _) = slice
+    print(slice)
+    (size, array, max_size) = slice
+    i = size - 1
 
-    value = init
-    for i in range(size):
-        value = fn(value, array[i], i)
-
-    return value
+    if size == 0:
+        return init
+    elif i == 0:
+        return fn(init, array[i], i)
+    else:
+        value = slice_fold(Slice((size - 1, array, max_size)), init, fn)
+        return fn(value, array[i], i)
 
 def slice_map(slice: Slice[A], fn: Callable[[A, int], B]) -> Slice[B]:
     new_slice: Any = slice

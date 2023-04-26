@@ -13,9 +13,11 @@ def wrap_partial(value: A, make_none: bool) -> Union[A, None]:
         return None
     return value
 
-def input_validator(msg: str, error: Callable[[str], str], check: Callable[[str], bool]):
+# RECURSIVE
+def input_validator(msg: str, error: Callable[[str], str], check: Callable[[str], bool]) -> str:
     value = input(msg)
-    while not check(value):
+    if not check(value):
         show_error(error(value))
-        value = input(msg)
-    return value
+        return input_validator(msg, error, check)
+    else:
+        return value
