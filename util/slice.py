@@ -28,7 +28,6 @@ def slice_append(slice: Slice[A], new: A) -> Slice[A]:
 # RECURSIVE
 # Fold pattern untuk slice
 def slice_fold(slice: Slice[A], init: B, fn: Callable[[B, A, int], B]) -> B:
-    print(slice)
     (size, array, max_size) = slice
     i = size - 1
 
