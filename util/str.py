@@ -35,11 +35,14 @@ def str_split(string: str, splitter: str):
 
     return slice
 
+# RECURSIVE
 def str_join(slice: Slice[str], mid: str) -> str:
-    (size, arr, _) = slice
-    result = ""
+    (size, array, max_size) = slice
+    i = size - 1
 
-    for i in range(size):
-        result += arr[i] + (mid if i  + 1 != size else "")
-
-    return result
+    if size == 0:
+        return ""
+    elif i == 0:
+        return array[i]
+    else:
+        return str_join(Slice((size - 1, array, max_size)), mid) + mid + array[i]
