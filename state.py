@@ -110,6 +110,7 @@ for i in range(max_id):
     if used_id[i] == False:
         empty_candi_id(i)
 
+# Element of undo stack (user, banyak_candi, list of candi)
 def undo_slice_wrapper() -> Slice[tuple[User, int, list[Candi]]]:
     return slice_create()
 (get_undo_stack, set_undo_stack) = create_state(undo_slice_wrapper())

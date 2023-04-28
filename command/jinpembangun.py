@@ -8,10 +8,18 @@ def run():
         show_error("Anda tidak memiliki akses ke command ini")
         return
     
-    (_, data, _) = get_bahan()
-    jumlah_pasir = data[0][2]
-    jumlah_batu = data[1][2]
-    jumlah_air = data[2][2]
+    bahan = get_bahan()
+    pasir = slice_get_element(bahan, lambda b, _: b[0] == "pasir")
+    batu = slice_get_element(bahan, lambda b, _: b[0] == "batu")
+    air = slice_get_element(bahan, lambda b, _: b[0] == "air")
+
+    if pasir == None or batu == None or air == None:
+        show_error("Tidak ditemukan bahan tersebut")
+        return
+
+    jumlah_pasir = pasir[2]
+    jumlah_batu = batu[2]
+    jumlah_air = air[2]
 
     butuh_pasir = random_range(1, 5)
     butuh_batu = random_range(1, 5)
@@ -21,10 +29,10 @@ def run():
         print("Bahan bangunan tidak mencukupi.")
         print("Candi tidak bisa dibangun")
         return
-
-    set_bahan(slice_update(get_bahan(), lambda b, _: Bahan((b[0], b[1], b[2] - butuh_pasir)) if b[0] == "pasir" else None))
-    set_bahan(slice_update(get_bahan(), lambda b, _: Bahan((b[0], b[1], b[2] - butuh_batu)) if b[0] == "batu" else None))
-    set_bahan(slice_update(get_bahan(), lambda b, _: Bahan((b[0], b[1], b[2] - butuh_air)) if b[0] == "air" else None))
+    
+    set_bahan(slice_update_target(get_bahan(), pasir, Bahan((pasir[0], pasir[1], pasir[2] - butuh_pasir))))
+    set_bahan(slice_update_target(get_bahan(), batu, Bahan((batu[0], batu[1], batu[2] - butuh_batu))))
+    set_bahan(slice_update_target(get_bahan(), air, Bahan((air[0], air[1], air[2] - butuh_air))))
     set_candi(slice_append(get_candi(), Candi((create_candi_id(), user[0], butuh_pasir, butuh_batu, butuh_air))))
 
     (jumlah_candi, _, _) = get_candi()

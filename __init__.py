@@ -17,6 +17,7 @@ import command.summonjin
 import command.ubahjin
 import command.undo
 
+print("\nLoading...\nSelamat datang di program \"Manajerial Candi\"")
 while True:
     cmd = input(">>> ")
 

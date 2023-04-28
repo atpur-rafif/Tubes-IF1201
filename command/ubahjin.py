@@ -9,7 +9,7 @@ def run():
     user = slice_get_element(get_user(), lambda u, _: u[0] == username and (u[2] == "jin_pembangun" or u[2] == "jin_pengumpul"))
 
     if user == None:
-        show_error("Username jin tidak ditemukan")
+        show_error("Tidak ada jin dengan username tersebut.")
         return
 
     ke = "jin_pembangun" if user[2] == "jin_pengumpul" else "jin_pengumpul"
@@ -24,7 +24,7 @@ def run():
     )
 
     if prompt == "N":
-        print("Jin tidak jadi diubah")
+        print("Jin dibatalkan untuk diubah")
         return
 
     set_user(slice_update_target(get_user(), user, User((user[0], user[1], ke))))

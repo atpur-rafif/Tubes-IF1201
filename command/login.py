@@ -4,7 +4,7 @@ from util.slice import *
 def run():
     logged_as = get_logged_as()
     if logged_as != None:
-        show_error(f'Login gagal!\nAnda telah login dengan username {logged_as[0]}, silahkan lakukan "logout"\nsebelum melakukan login kembali ')
+        show_error(f'Login gagal!\nAnda telah login dengan username {logged_as[0]}, silahkan lakukan \"logout\" sebelum melakukan login kembali.')
         return
     username = input('Username: ')
     user = slice_get_element(get_user(), lambda u,_:u[0]==username)

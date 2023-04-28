@@ -2,10 +2,10 @@ from typing import Callable, Union
 from custom_typing import *
 
 def show_error(msg: str):
-    print(msg)
+    print('\033[93m' + msg + '\033[0m')
 
 def error_exit(msg: str):
-    show_error(msg)
+    print('\033[91m' + msg + '\033[0m')
     exit()
 
 def wrap_partial(value: A, make_none: bool) -> Union[A, None]:

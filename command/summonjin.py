@@ -11,24 +11,28 @@ def run():
         return
     
     jenis = input_validator(
-        "(1) Pengumpul\n(2) Pembangun\nJenis jin: ",
-        lambda v: f"Input \"{v}\" tidak valid",
+        "Jenis jin yang dapat dipanggil:\n(1) Pengumpul - Bertugas mengumpulkan bahan bangunan\n(2) Pembangun - Bertugas membangun candi\nMasukkan nomor jenis jin yang ingin diambil: ",
+        lambda v: f"Tidak ada jenis jin bernomor \"{v}\"",
         lambda v: v == '1' or v == '2'
     )
 
+    jenis_text = "Pengumpul" if jenis == "1" else "Pembangun"
+    print(f"Memilih jin \"{jenis_text}\".")
+
     username = input_validator(
         "Masukan username: ",
-        lambda v: f"Username \"{v}\" sudah digunakan",
+        lambda v: f"Username \"{v}\" sudah diambil",
         lambda v: slice_get_element(get_user(), lambda u, _: u[0] == v) == None
     )
 
     password = input_validator(
         "Masukkan password: ",
-        lambda _: f"Panjang password harus diantara 5 dan 25",
+        lambda _: "Password panjangnya harus 5-25 karakter!",
         lambda v: 5 <= str_len(v) and str_len(v) <= 25
     )
 
     set_user(slice_append(get_user(), User((username, password, "jin_pengumpul" if jenis == '1' else "jin_pembangun"))))
-    print("Jin berhasil disummon")
+    print("Mengumpulkan sesajen...\nMenyerahkan sesajen...\nMembacakan mantra...")
+    print(f"Jin f{username} berhasil dipanggil!")
 
 
