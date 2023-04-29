@@ -29,13 +29,11 @@ def slice_append(slice: Slice[A], new: A) -> Slice[A]:
 # Fold pattern untuk slice
 def slice_fold(slice: Slice[A], init: B, fn: Callable[[B, A, int], B]) -> B:
     (size, array, max_size) = slice
-    i = size - 1
 
     if size == 0:
         return init
-    elif i == 0:
-        return fn(init, array[i], i)
     else:
+        i = size - 1
         value = slice_fold(Slice((size - 1, array, max_size)), init, fn)
         return fn(value, array[i], i)
 
