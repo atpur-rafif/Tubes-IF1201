@@ -33,6 +33,6 @@ def run():
 
     set_user(slice_append(get_user(), User((username, password, "jin_pengumpul" if jenis == '1' else "jin_pembangun"))))
     print("Mengumpulkan sesajen...\nMenyerahkan sesajen...\nMembacakan mantra...")
-    print(f"Jin f{username} berhasil dipanggil!")
+    print(f"Jin {username} berhasil dipanggil!")
 
 
