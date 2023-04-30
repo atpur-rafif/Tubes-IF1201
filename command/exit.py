@@ -2,7 +2,7 @@ from env import *
 from util.data import *
 from state import *
 
-def run():
+def run() -> None:
     prompt = input_validator(
         f"Apakah Anda ingin menyimpan save file pada \"{Folder}\" (Y/N)? ",
         lambda v: f"Input \"{v}\" tidak valid",

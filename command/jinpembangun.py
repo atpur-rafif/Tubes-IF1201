@@ -2,7 +2,7 @@ from state import *
 from env import *
 from util.random import random_range
 
-def run():
+def run() -> None:
     user = get_logged_as()
     if user == None or user[2] != "jin_pembangun":
         show_error("Anda tidak memiliki akses ke command ini")

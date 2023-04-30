@@ -1,5 +1,5 @@
 from state import *
-def run():
+def run() -> None:
     if get_role() == None:
         print("=========== HELP ===========")
         print(f"1. login\n   Untuk masuk akun")

@@ -1,7 +1,7 @@
 from state import *
 from custom_typing import *
 
-def run():
+def run() -> None:
     (stack_size, stack, _) = get_undo_stack()
 
     if stack_size == 0:

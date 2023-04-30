@@ -1,7 +1,7 @@
 from state import *
 from util.random import random_range
 
-def run():
+def run() -> None:
     if get_role() != "bandung_bondowoso":
         show_error("Anda tidak memiliki akses ke command ini")
         return

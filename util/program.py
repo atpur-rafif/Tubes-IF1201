@@ -1,10 +1,10 @@
 from typing import Callable, Union
 from custom_typing import *
 
-def show_error(msg: str):
+def show_error(msg: str) -> None:
     print('\033[93m' + msg + '\033[0m')
 
-def error_exit(msg: str):
+def error_exit(msg: str) -> None:
     print('\033[91m' + msg + '\033[0m')
     exit()
 

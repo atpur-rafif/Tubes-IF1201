@@ -1,10 +1,10 @@
 from util.slice import *
 
 # Force len only can be use by string data type
-def str_len(string: str):
+def str_len(string: str) -> int:
     return len(string)
 
-def str_split(string: str, splitter: str):
+def str_split(string: str, splitter: str) -> Slice[str]:
     string_len = str_len(string)
     splitter_len = str_len(splitter)
 

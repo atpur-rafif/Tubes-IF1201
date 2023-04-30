@@ -52,10 +52,10 @@ def slice_map(slice: Slice[A], fn: Callable[[A, int], B]) -> Slice[B]:
 def slice_filter(slice: Slice[A], fn: Callable[[A, int], bool]) -> Slice[A]:
     return slice_fold(slice, slice_create(), lambda v, a, i: slice_append(v, a) if fn(a, i) else v)
 
-def slice_remove(slice: Slice[A], fn: Callable[[A, int], bool]):
+def slice_remove(slice: Slice[A], fn: Callable[[A, int], bool]) -> Slice[A]:
     return slice_filter(slice, lambda v, i: not fn(v, i))
 
-def slice_remove_target(slice: Slice[A], target: A):
+def slice_remove_target(slice: Slice[A], target: A) -> Slice[A]:
     return slice_remove(slice, lambda v, _: v == target)
 
 # Slice getter, mendapatkan data mengenai slice
@@ -103,7 +103,7 @@ def slice_count_recur(slice: Slice[A], fn: Callable[[A, int], bool]) -> int:
         return v + 1 if fn(a,i) else v
 
 # Mutate slice, dengan menggunakan callback
-def slice_update(slice: Slice[A], fn: Callable[[A, int], Union[A, None]]):
+def slice_update(slice: Slice[A], fn: Callable[[A, int], Union[A, None]]) -> Slice[A]:
     (size, array, max_size) = slice
 
     for i in range(size):
@@ -116,6 +116,6 @@ def slice_update(slice: Slice[A], fn: Callable[[A, int], Union[A, None]]):
 
     return (size, array, max_size)
 
-def slice_update_target(slice: Slice[A], target: A, new: A):
+def slice_update_target(slice: Slice[A], target: A, new: A) -> Slice[A]:
     return slice_update(slice, lambda v, _: new if v == target else None)
 

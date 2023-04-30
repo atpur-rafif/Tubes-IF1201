@@ -64,7 +64,6 @@ def get_role() -> Union[role, None]:
         return None
     return user[2]
 
-
 BAHAN_SIZE = 3
 BAHAN_LIST = [
     ("pasir", "ini pasir"),
@@ -76,12 +75,11 @@ BAHAN_LIST = [
 for i in range(BAHAN_SIZE):
     bahan = slice_get_element(get_bahan(), lambda b, _: b[0] == BAHAN_LIST[i][0]) 
     if bahan == None:
-        set_bahan(slice_append(get_bahan(), Bahan((BAHAN_LIST[i][0], BAHAN_LIST[0][1], 0))))
+        set_bahan(slice_append(get_bahan(), Bahan((BAHAN_LIST[i][0], BAHAN_LIST[i][1], 0))))
 
 max_id = slice_fold(get_candi(), -1, lambda v, a, _: a[0] if a[0] > v else v)
 (get_candi_id, set_candi_id) = create_state(max_id)
 (get_unused_id, set_unused_id) = create_state(slice_create())
-
 
 def empty_candi_id(i: int):
     set_unused_id(slice_append(get_unused_id(), i))

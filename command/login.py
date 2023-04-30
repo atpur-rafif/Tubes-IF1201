@@ -1,7 +1,7 @@
 from state import *
 from util.slice import *
 
-def run():
+def run() -> None:
     logged_as = get_logged_as()
     if logged_as != None:
         show_error(f'Login gagal!\nAnda telah login dengan username {logged_as[0]}, silahkan lakukan \"logout\" sebelum melakukan login kembali.')

@@ -1,6 +1,6 @@
 from state import *
 
-def run():
+def run() -> None:
     if get_role() != "bandung_bondowoso":
         show_error("Laporan jin hanya dapat diakses oleh akun Bandung Bondowoso.")
         return

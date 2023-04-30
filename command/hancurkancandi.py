@@ -1,5 +1,5 @@
 from state import *
-def run():
+def run() -> None:
     if get_role() != 'roro_jonggrang':
         show_error('Anda tidak memiliki akses ke command ini')
         return
