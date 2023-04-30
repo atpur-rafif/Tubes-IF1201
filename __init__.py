@@ -17,9 +17,9 @@ import command.summonjin
 import command.ubahjin
 import command.undo
 
-print("\nLoading...\nSelamat datang di program \"Manajerial Candi\"")
+print("Loading...\nSelamat datang di program \"Manajerial Candi\"")
 while True:
-    cmd = input(">>> ")
+    cmd = input("\n>>> ")
 
     if cmd == "exit":
         command.exit.run()
@@ -57,4 +57,3 @@ while True:
         command.undo.run()
     else:
         show_error(f"Command \"{cmd}\" tidak ditemukan")
-    print("")
