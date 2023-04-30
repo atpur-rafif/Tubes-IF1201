@@ -5,8 +5,8 @@ def run():
         show_error("Anda tidak memiliki akses ke command ini")
         return
 
-    banyak_jin = slice_get_size(get_user())
-    if banyak_jin >= 100:
+    banyak_jin = slice_count(get_user(), lambda v, _: v[2] == "jin_pembangun" or v[2] == "jin_pengumpul")
+    if banyak_jin >= JIN_MAKS:
         show_error("Jin terlalu banyak")
         return
     
