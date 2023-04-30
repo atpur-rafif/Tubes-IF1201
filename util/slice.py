@@ -75,9 +75,32 @@ def slice_get_max_size(slice: Slice[A]) -> int:
 def slice_get_element(slice: Slice[A], fn: Callable[[A, int], bool]) -> Union[A, None]:
     return slice_fold(slice, None, lambda v, a, i: v if v != None else (a if fn(a, i) else None))
 
+# RECURSIVE (Not as elegant using fold pattern)
+def slice_get_element_recur(slice: Slice[A], fn: Callable[[A, int], bool]) -> Union[A, None]:
+    (size, array, max_size) = slice
+
+    if size == 0:
+        return None
+    else:
+        i = size - 1
+        a = array[i]
+        v = slice_get_element_recur(Slice((size - 1, array, max_size)), fn)
+        return v if v != None else (a if fn(a, i) else None)
+
 def slice_count(slice: Slice[A], fn: Callable[[A, int], bool]):
     return slice_fold(slice, 0, lambda v, a, i: v + 1 if fn(a, i) else v)
 
+# RECURSIVE (Not as elegant using fold pattern)
+def slice_count_recur(slice: Slice[A], fn: Callable[[A, int], bool]) -> int:
+    (size, array, max_size) = slice
+
+    if size == 0:
+        return 0
+    else:
+        i = size - 1
+        a = array[i]
+        v = slice_count_recur(Slice((size - 1, array, max_size)), fn)
+        return v + 1 if fn(a,i) else v
 
 # Mutate slice, dengan menggunakan callback
 def slice_update(slice: Slice[A], fn: Callable[[A, int], Union[A, None]]):
