@@ -36,4 +36,4 @@ def run():
         c = candi[i]
         set_candi(slice_append(get_candi(), Candi((create_candi_id(), c[1], c[2], c[3], c[4]))))
 
-    print(f"Jin berhasil {user[0]} dikembalikan")
+    print(f"Jin \"{user[0]}\" berhasil dikembalikan")
